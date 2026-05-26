@@ -97,6 +97,7 @@ class GymNav(gym.Env):
         return self.get_state(), {"state_central": self.get_state_central()}
 
     def step(self, action):
+        print(f"[env] step {self.timer}  action={action} pos={self.pos}")
         reward = 0
         for i, action in enumerate(action):
             if action == 0:
@@ -111,6 +112,8 @@ class GymNav(gym.Env):
                 mov = [0, 0]
             self.pos[i][0] = (self.pos[i][0] + mov[0]) % self.map_size
             self.pos[i][1] = (self.pos[i][1] + mov[1]) % self.map_size
+
+        print(f"[env] step {self.timer}  action={action} pos={self.pos}")
 
         for obstacle in self.target_goal:
             min_dist = self.map_size
