@@ -94,7 +94,7 @@ def run(number_of_agents: int = 4, map_size: int = 15):
 
         # Send next observation to each agent
         for i, agent in enumerate(agents):
-            agent.obs_queue.put(observations[i])
+            agent.obs_queue.put(info["state_central"][i])
 
     # ── shutdown agent threads ─────────────────────────────────────────
     for agent in agents:
